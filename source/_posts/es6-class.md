@@ -1,5 +1,5 @@
 ---
-title: (ES6) Class
+title: ES6 Class
 date: 2018-01-09 10:24:00
 tags:
   - es6
@@ -13,7 +13,7 @@ ES6 引入了`class`，作为“对象的模板”；通过`class`，定义类�
 
 ### 代码分析
 
-```js
+```javascript
 const methodName = 'getArea';
 function bar2(baz) {
   return this.snaf = baz;
