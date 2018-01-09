@@ -10,6 +10,20 @@ tags:
 
 那什么是渐进式框架呢？
 
+在说明这个问题之前，先了解一下前端框架。
+
+### 前端框架
+
+> 框架的存在是为了帮助我们应对复杂度。
+
+但框架自身在存在复杂度，
+这里就抽象出一个问题，就是要做的应用的复杂度与所使用的框架的复杂度的对比。
+进一步说，是所要解决的问题的内在复杂度，与所使用的工具的复杂度进行对比。
+
+> Pick the right tool for the job.
+
+### 渐进式框架
+
 在知乎徐飞的回答中，强调：“渐进式代表的是主张最少”。
 
 > 主张是框架对使用者的要求，它会影响在业务开发中的使用方式。
@@ -22,6 +36,7 @@ tags:
 > Vue是渐进式的，没有强主张，作者推荐使用 Vue 的原因是：
 > 要替换原系统中的那部分，直接使用 Vue 中的那部分功能就好了。
 
-## 参考文档
+### 参考文档
 
 - [Vue2.0 中，“渐进式框架”和“自底向上增量开发的设计”这两个概念是什么？ - 徐飞的回答 - 知乎](https://www.zhihu.com/question/51907207/answer/136559185)
+- [Vue作者尤雨溪：Vue 2.0，渐进式前端解决方案](http://mp.weixin.qq.com/s?__biz=MzIwNjQwMzUwMQ==&mid=2247484393&idx=1&sn=142b8e37dfc94de07be211607e468030&chksm=9723612ba054e83db6622a891287af119bb63708f1b7a09aed9149d846c9428ad5abbb822294&mpshare=1&scene=1&srcid=1026oUz3521V74ua0uwTcIWa&from=groupmessage&isappinstalled=0#wechat_redirect&utm_source=tuicool&utm_medium=referral)
