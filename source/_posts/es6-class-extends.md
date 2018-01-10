@@ -25,6 +25,8 @@ class Point {
 }
 
 // 子类
+// 通过 extends 实现继承
+// 只要是一个有 prototype 属性的函数，就能被继承；
 class ColorPoint extends Point {
   // 任何子类都必须有 constructor 方法
   /** 默认
@@ -69,3 +71,63 @@ let cp = new ColorPoint(25, 8, 'green');
 cp instanceof ColorPoint; // true
 cp instanceof Point; // true
 ```
+
+### __proto__ 属性 和 prototype 属性
+
+```js
+// 1. ES5: 每一个对象都有__proto__属性，
+// 指向对应的构造函数的prototype属性。
+// 2. ES6: 子类的__proto__属性，表示构造函数的继承，总是指向父类。
+ColorPoint.__proto__ === Point;
+// ES6: 子类 prototype 属性的__proto__属性，
+// 表示方法的继承，总是指向父类的prototype属性。
+ColorPoint.prototype.__proto__ === Point.prototype;
+```
+
+### 原生构造函数的继承
+
+原生构造函数是指语言内置的构造函数，通常用来生成数据结构。
+
+- Boolean()
+- Number()
+- String()
+- Array()
+- Date()
+- Function()
+- RegExp()
+- Error()
+- Object()
+
+以前，原生构造函数，无法被继承，
+以为原生构造函数的 this 无法绑定，导致拿不到内部属性；
+
+ES5 是先新建子类的实例对象 this，
+再将父类的属性添加到子类上，
+由于父类的内部属性无法获取，导致无法继承原生的构造函数；
+
+ES6 允许继承原生构造函数定义子类，
+因为 ES6 是先新建父类的实例对象this，
+然后再用子类的构造函数修饰this，
+使得父类的所有行为都可以继承。
+
+```js
+class MyArray extends Array {
+  constructor(...args) {
+    super(...args);
+  }
+}
+
+var arr = new MyArray();
+arr[0] = 12;
+arr.length // 1
+
+arr.length = 0;
+arr[0] // undefined
+```
+
+extends关键字不仅可以用来继承类，还可以用来继承原生的构造函数。
+因此可以在原生数据结构的基础上，定义自己的数据结构。
+
+### 参考文档
+
+- [Class 的继承](http://es6.ruanyifeng.com/#docs/class-extends)
