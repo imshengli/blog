@@ -72,16 +72,36 @@ cp instanceof ColorPoint; // true
 cp instanceof Point; // true
 ```
 
-### __proto__ 属性 和 prototype 属性
+### `__proto__` 属性 和 prototype 属性
+
+```js
+// 类的继承的实现方式
+class A { }
+class B { }
+// B 的实例继承 A 的实例
+Object.setPrototypeOf(B.prototype, A.prototype);
+// B 的实例继承 A 的静态属性
+Object.setPrototypeOf(B, A);
+
+const b = new B();
+```
+
+```js
+// setPrototypeOf 的实现
+Object.setPrototypeOf = function (obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+};
+```
 
 ```js
 // 1. ES5: 每一个对象都有__proto__属性，
 // 指向对应的构造函数的prototype属性。
 // 2. ES6: 子类的__proto__属性，表示构造函数的继承，总是指向父类。
-ColorPoint.__proto__ === Point;
-// ES6: 子类 prototype 属性的__proto__属性，
-// 表示方法的继承，总是指向父类的prototype属性。
-ColorPoint.prototype.__proto__ === Point.prototype;
+B.__proto__ === A;
+// ES6: 子类 prototype 属性的 __proto__ 属性，
+// 表示方法的继承，总是指向父类的 prototype 属性。
+B.prototype.__proto__ === A.prototype;
 ```
 
 ### 原生构造函数的继承
