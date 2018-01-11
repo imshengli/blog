@@ -5,8 +5,15 @@ tags:
   - es6
 ---
 
+### 总结
+
+- 参数默认值；
+
 ### 代码分析
 
 ```js
-
+// 默认值
+function log(x, y = 'World') {
+  console.log(x, y);
+}
 ```
