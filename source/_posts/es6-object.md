@@ -10,6 +10,8 @@ tags:
 - 属性和方法简写；
 - 表达式属性名和方法名；
 - name 属性；
+- Object.is();
+- Object.assign();
 
 ### 代码分析
 
@@ -50,7 +52,6 @@ const obj = {
     yield 'hello world';
   }
 };
-
 ```
 
 ### `Object.is()`
@@ -97,6 +98,9 @@ Object.assign(undefined) // 报错
 Object.assign(null) // 报错
 
 // 如果 undefined 和 null 出现在非第一个参数上，不会报错；
+let obj = {a: 1};
+Object.assign(obj, undefined) === obj // true
+Object.assign(obj, null) === obj // true
 // 其他类型的值（即数值、字符串和布尔值）不在首参数，也不会报错。
 // 但是，除了字符串会以数组形式，拷贝入目标对象，其他值都不会产生效果。
 // 这是因为只有字符串的包装对象，会产生可枚举属性。
@@ -125,7 +129,7 @@ Object.assign({ a: 'b' }, { [Symbol('c')]: 'd' });
 
 **注意点**
 
-1. 浅拷贝：如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。
+浅拷贝：如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。
 
 ```js
 const obj1 = {a: {b: 1}};
@@ -135,7 +139,7 @@ obj1.a.b = 2;
 obj2.a.b; // 2
 ```
 
-2. 同名属性的替换：一旦遇到同名属性，Object.assign的处理方法是替换，而不是添加。
+同名属性的替换：一旦遇到同名属性，Object.assign的处理方法是替换，而不是添加。
 
 ```js
 const target = { a: { b: 'c', d: 'e' } };
@@ -144,14 +148,14 @@ Object.assign(target, source);
 // { a: { b: 'hello' } }
 ```
 
-3. 数组的处理：Object.assign可以用来处理数组，但是会把数组视为对象。
+数组的处理：Object.assign可以用来处理数组，但是会把数组视为对象。
 
 ```js
 Object.assign([1, 2, 3], [4, 5]);
 // [4, 5, 3]
 ```
 
-4. 取值函数的处理：Object.assign只能进行值的复制，如果要复制的值是一个取值函数，那么将求值后再复制。
+取值函数的处理：Object.assign只能进行值的复制，如果要复制的值是一个取值函数，那么将求值后再复制。
 
 ```js
 const source = {
@@ -160,4 +164,60 @@ const source = {
 const target = {};
 Object.assign(target, source)
 // { foo: 1 }
+```
+
+**常见用途**
+
+为对象添加属性
+
+```js
+class Point {
+  constructor(x, y) {
+    Object.assign(this, {x, y});
+  }
+}
+```
+
+为对象添加方法
+
+```js
+Object.assign(SomeClass.prototype, {
+  someMethod(arg1, arg2) {
+    // ···
+  },
+  anotherMethod() {
+    // ···
+  }
+});
+```
+
+克隆对象
+
+```js
+// 注：是浅拷贝，
+// 只能克隆原始对象自身的值，不能克隆继承的值；
+// [Todos] 如何克隆继承的值；
+function clone(origin) {
+  return Object.assign({}, origin);
+}
+```
+
+合并多个对象
+
+```js
+const merge = (...sources) => Object.assign({}, ...sources);
+```
+
+为属性指定默认值
+
+```js
+const DEFAULTS = {
+  logLevel: 0,
+  outputFormat: 'html'
+};
+function processContent(options) {
+  options = Object.assign({}, DEFAULTS, options);
+  console.log(options);
+  // ...
+}
 ```
