@@ -2,7 +2,7 @@
 title: XSS 和 CSRF 基本概念
 date: 2018-01-11 20:10:10
 tags:
-  - safe
+  - Safe
 ---
 
 ### XSS

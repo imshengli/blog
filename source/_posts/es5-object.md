@@ -2,7 +2,7 @@
 title: ES5 Object
 date: 2018-01-11 12:48:00
 tags:
-  - es5
+  - ES5
 ---
 
 ### `Object.defineProperty()`

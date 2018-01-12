@@ -2,7 +2,7 @@
 title: JSON
 date: 2018-01-11 17:55:10
 tags:
-  - js
+  - JS
 ---
 
 ### 简介
