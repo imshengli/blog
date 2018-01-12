@@ -2,7 +2,7 @@
 title: ES6 Class Extends
 date: 2018-01-09 24:24:00
 tags:
-  - ES6
+  - es6
 ---
 
 ### 简介

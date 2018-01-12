@@ -2,7 +2,7 @@
 title: ES6 Class
 date: 2018-01-09 10:24:00
 tags:
-  - ES6
+  - es6
 ---
 
 ### 简介

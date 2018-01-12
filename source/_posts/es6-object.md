@@ -2,7 +2,7 @@
 title: ES6 Object
 date: 2018-01-10 19:24:00
 tags:
-  - ES6
+  - es6
 ---
 
 ### 总结

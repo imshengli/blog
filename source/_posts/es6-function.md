@@ -2,7 +2,7 @@
 title: ES6 Function
 date: 2018-01-11 15:48:00
 tags:
-  - ES6
+  - es6
 ---
 
 ### 总结
