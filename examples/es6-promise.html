@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<script>
+
+// console.log(aaa);
+const pro = new Promise(function (resolve, reject) {
+  throw new Error('test');
+  resolve('ok');
+  setTimeout(function () { throw new Error('test') }, 0)
+});
+pro.then(function (value) { console.log(value) }, (err) => {
+  console.log(err);
+});
+
+setTimeout(() => {
+  console.log('adfsfd')
+}, 1000);
+
+function loadImageAsync(url) {
+  // 返回一个 Promise 实例
+  return new Promise(function(resolve, reject) {
+    const image = new Image();
+    image.onload = function() {
+      resolve(image);
+    };
+    image.onerror = function() {
+      reject(new Error('Could not load image at ' + url));
+    };
+    image.src = url;
+  });
+}
+
+loadImageAsync('https://imshengli.com/images/logo.png')
+.then(image => {
+  console.log(image);
+  return image;
+}).then(res => {
+  console.log(res);
+  return 1;
+}).then(res => {
+  console.log(typeof res);
+});
+
+</script>
+</body>
+</html>
