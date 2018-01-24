@@ -1,6 +1,7 @@
 ---
 title: ES6 Promise
 date: 2018-01-14 13:20:10
+categories: JavaScript
 tags:
   - es6
 ---

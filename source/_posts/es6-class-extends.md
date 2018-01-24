@@ -1,6 +1,7 @@
 ---
 title: ES6 Class Extends
 date: 2018-01-09 24:24:00
+categories: JavaScript
 tags:
   - es6
 ---
