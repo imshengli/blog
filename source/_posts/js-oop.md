@@ -197,7 +197,7 @@ Date.hasOwnProperty('toString')
 **in 运算符和 for…in 循环**
 
 in运算符返回一个布尔值，表示一个对象是否具有某个属性。
-它不区分该属性是对象自身的属性，还是继承的属性。
+属性包括：自身的、继承的。
 
 ```js
 'length' in Date // true
@@ -225,3 +225,12 @@ for (p in o2) {console.info(p);}
 * 确保拷贝后的对象，与原对象具有同样的属性。
 
 
+## prototype 对象
+
+prototype 对象作用：
+为了解决对象的属性和方法共享问题，引入了“原型对象”。
+定义所有实例对象共享的属性和方法。
+
+## 参考链接
+
+- [构造函数与 new 命令](http://javascript.ruanyifeng.com/oop/basic.html)
