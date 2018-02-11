@@ -118,7 +118,7 @@ var root = (typeof self == 'object' && self.self == self && self) ||
 
 现在我们讲第二句 `var _ = {};`。
 
-如果仅仅设置 _ 为一个空对象，我们调用方法的时候，只能使用 `_.reverse('hello')` 的方式，实际上，underscore 也支持类似面向对象的方式调用，即：
+如果仅仅设置 `_` 为一个空对象，我们调用方法的时候，只能使用 `_.reverse('hello')` 的方式，实际上，underscore 也支持类似面向对象的方式调用，即：
 
 ```js
 _('hello').reverse(); // 'olleh'
@@ -168,7 +168,7 @@ var _ = function() {}
 root._ = _;
 ```
 
-如何做到 `_([1, 2, 3]).each(...)`呢？即 _ 函数返回一个对象，这个对象，如何调用挂在 _ 函数上的方法呢？
+如何做到 `_([1, 2, 3]).each(...)`呢？即 `_` 函数返回一个对象，这个对象，如何调用挂在 `_` 函数上的方法呢？
 
 我们看看 underscore 是如何实现的：
 
@@ -192,7 +192,7 @@ _([1, 2, 3]);
 
 [![_()示意图](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/underscore/new-obj.png)](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/underscore/new-obj.png)
 
-然后问题来了，我们是将方法挂载到 _ 函数对象上，并没有挂到函数的原型上呐，所以返回了的实例，其实是无法调用 _ 函数对象上的方法的！
+然后问题来了，我们是将方法挂载到 `_` 函数对象上，并没有挂到函数的原型上呐，所以返回了的实例，其实是无法调用 `_` 函数对象上的方法的！
 
 我们写个例子：
 
@@ -219,11 +219,11 @@ _([1, 2, 3]);
 _().log(); // _(...).log is not a function
 ```
 
-确实有这个问题，所以我们还需要一个方法将 _ 上的方法复制到 `_.prototype` 上，这个方法就是 `_.mixin`。
+确实有这个问题，所以我们还需要一个方法将 `_` 上的方法复制到 `_.prototype` 上，这个方法就是 `_.mixin`。
 
 ## _.functions
 
-为了将 _ 上的方法复制到原型上，首先我们要获得 _ 上的方法，所以我们先写个 `_.functions` 方法。
+为了将 `_` 上的方法复制到原型上，首先我们要获得 `_` 上的方法，所以我们先写个 `_.functions` 方法。
 
 ```js
 _.functions = function(obj) {
@@ -291,7 +291,7 @@ if (typeof exports != 'undefined' && !exports.nodeType) {
 }
 ```
 
-为了支持模块化，我们需要将 _ 在合适的环境中作为模块导出，但是 nodejs 模块的 API 曾经发生过改变，比如在早期版本中：
+为了支持模块化，我们需要将 `_` 在合适的环境中作为模块导出，但是 nodejs 模块的 API 曾经发生过改变，比如在早期版本中：
 
 ```js
 // add.js

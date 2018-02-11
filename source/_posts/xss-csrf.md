@@ -7,7 +7,7 @@ tags:
 
 ### XSS
 
-XSS，跨站脚本攻击，即Cross Site Scripting，
+XSS，跨站脚本攻击，即 Cross Site Scripting，
 为了和CSS不重名，所以取名为XSS。
 
 #### 原理
@@ -57,6 +57,10 @@ M用户的畸形输入
 #### 如何防范XSS?
 
 因此我们要对用户的输入（url参数/post数据等）当做不可信数据来处理。
+
+那能否从根本上这种行为呢？
+
+Content Security Policy
 
 ### CSRF
 
